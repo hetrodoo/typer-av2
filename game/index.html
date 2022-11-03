@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Typer - Game</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+
+<body>
+    <input class="input" id="input" type="text">
+
+    <div class="word-display" id="word-display"></div>
+
+    <div class="char-list" id="char-list">
+        <div class="char"><span class="blink">|</span></div>
+    </div>
+
+    <div class="timer" id="timer"></div>
+
+    <div style="display: none;" class="dialog" id="dialog">
+        <h1 style="margin: 0;">Parabéns 👏</h2>
+            <div style="height: 16px;"></div>
+            <span style="margin-right: 4px;">Pontuação:</span><span class="score" id="score"></span>
+            <div style="height: 16px;"></div>
+            <span style="margin-right: 4px;">Estrelas:</span><span class="score" id="stars"></span>
+            <div style="height: 32px;"></div>
+            <span style="margin-right: 4px;">WPM:</span><span class="score" id="wpm"></span>
+            <div style="height: 32px;"></div>
+            <button class="dialog-button" onclick="startGame();">
+                Novo Jogo
+            </button>
+    </div>
+
+    <script src="words.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>
