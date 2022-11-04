@@ -11,8 +11,9 @@ window.addEventListener("click", () => {
 });
 
 inputEl.addEventListener('input', ({ target, data }) => {
-    if(gameRunning && gameStart === undefined) {
+    if (gameRunning && gameStart === undefined) {
         gameStart = new Date().getTime();
+        document.getElementById('fallback-button').style.display = "none";
     }
 
     const charList = document.getElementById("char-list");
@@ -21,11 +22,11 @@ inputEl.addEventListener('input', ({ target, data }) => {
     const characters = [...target.value];
 
     for (let i = 0; i < characters.length; i++) {
-        const shouldSlideIn = i !== 0 && i === characters.length - 1 && data;
+        const shouldAnimate = i !== 0 && i === characters.length - 1 && data;
         const isWrong = wordList[0][i] !== characters[i];
         const newEl = document.createElement("div");
 
-        newEl.setAttribute("class", `char${isWrong ? " wrong" : ""}${shouldSlideIn ? " slide-in" : ""}`);
+        newEl.setAttribute("class", `char${isWrong ? " wrong" : ""}${shouldAnimate ? " pop-in" : ""}`);
         newEl.innerText = characters[i];
 
         if (characters[i] === " ") {
@@ -126,12 +127,24 @@ function startGame() {
     window.dispatchEvent(new Event('click', { bubbles: true }));
 }
 
-startGame();
+function useFallbackInput() {
+    document.getElementById('input').removeAttribute("style");
+    document.getElementById('char-list').style.display = "none";
+    document.getElementById('fallback-button').style.display = "none";
+}
 
 setInterval(() => {
-    if(gameRunning && gameStart !== undefined) {
+    if (gameRunning && gameStart !== undefined) {
         document.getElementById("timer").innerText = `${Math.floor((new Date().getTime() - gameStart) / 1000)} segundos`
     } else {
         document.getElementById("timer").innerText = '';
     }
 }, 500);
+
+setTimeout(() => {
+    if (gameRunning && gameStart === undefined) {
+        document.getElementById('fallback-button').style.display = "block";
+    }
+}, 2500);
+
+startGame();

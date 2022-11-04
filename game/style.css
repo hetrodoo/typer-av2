@@ -4,19 +4,22 @@
     font-family: 'Montserrat', sans-serif;
 }
 
-body, html {
+body,
+html {
     margin: 0;
     padding: 0;
 }
 
 .input {
     position: absolute;
-    top: 0;
+    top: 50%;
     left: 0;
-    width: 0;
-    height: 0;
+    width: 100%;
     border: none;
     outline: none;
+    font-size: 1.5em;
+    text-align: center;
+    transform: translateY(-50%);
 }
 
 .char-list {
@@ -97,12 +100,15 @@ body, html {
     filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.25));
 }
 
-.dialog-button {
+button {
     cursor: pointer;
     border: none;
     padding: 8px;
     color: white;
     border-radius: 4px;
+}
+
+.dialog-button {
     background-color: #77DD77;
 }
 
@@ -111,6 +117,13 @@ body, html {
     top: 32px;
     right: 48px;
     font-size: 24px;
+}
+
+.fallback-button {
+    position: absolute;
+    top: 32px;
+    right: 48px;
+    background-color: orange;
 }
 
 /*Animations*/
@@ -143,20 +156,22 @@ body, html {
     }
 }
 
-.slide-in {
-    animation-name: slide-in;
+.pop-in {
+    animation-name: pop-in;
     animation-duration: 250ms;
     animation-iteration-count: 1;
 }
 
-@keyframes slide-in {
+@keyframes pop-in {
     0% {
-        transform: translateY(25%);
-        opacity: 0;
+        scale: 0;
+    }
+
+    50% {
+        scale: 1.25;
     }
 
     100% {
-        transform: translateY(0%);
-        opacity: 1;
+        scale: 1;
     }
 }
