@@ -5,23 +5,19 @@
     <title>Typer - Game</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="style.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
 </head>
 
 <body>
-    <input class="input" id="input" type="text" style="color: transparent;">
+    <input type='text' id='actual-input' style="color: transparent; border: none; outline: none;">
 
     <div class="word-display" id="word-display"></div>
 
-    <div class="char-list" id="char-list">
-        <div class="char"><span class="blink">|</span></div>
-    </div>
-
     <div class="timer" id="timer"></div>
 
-    <button id="fallback-button" class="fallback-button" style="display: none;" onclick="useFallbackInput();">
-        Usar entrada padrão
-    </button>
+    <div class="custom-input" id="custom-input" onclick="mobileFocusOnActualInput();">
+        <div class="char"><span class="blink">|</span></div>
+    </div>
 
     <div style="display: none;" class="dialog" id="dialog">
         <h1 style="margin: 0;">Parabéns 👏</h2>
@@ -37,8 +33,10 @@
             </button>
     </div>
 
-    <script src="words.js"></script>
-    <script src="main.js"></script>
+    <script src="js/UI.js"></script>
+    <script src="js/game.js"></script>
+    <script src="js/words.js"></script>
+    <script src="js/main.js"></script>
 </body>
 
 </html>

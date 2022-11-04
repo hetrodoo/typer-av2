@@ -10,19 +10,15 @@ html {
     padding: 0;
 }
 
-.input {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    width: 100%;
+button {
+    cursor: pointer;
     border: none;
-    outline: none;
-    font-size: 1.5em;
-    text-align: center;
-    transform: translateY(-50%);
+    padding: 8px;
+    color: white;
+    border-radius: 4px;
 }
 
-.char-list {
+.custom-input {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -35,7 +31,7 @@ html {
     gap: 8px;
 }
 
-.char {
+.custom-input .char {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -46,7 +42,7 @@ html {
     font-weight: normal;
 }
 
-.wrong {
+.custom-input .wrong {
     color: #FF6961;
     border-bottom: 3px solid #FF6961;
 }
@@ -100,14 +96,6 @@ html {
     filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.25));
 }
 
-button {
-    cursor: pointer;
-    border: none;
-    padding: 8px;
-    color: white;
-    border-radius: 4px;
-}
-
 .dialog-button {
     background-color: #77DD77;
 }
@@ -117,13 +105,6 @@ button {
     top: 32px;
     right: 48px;
     font-size: 24px;
-}
-
-.fallback-button {
-    position: absolute;
-    top: 32px;
-    right: 48px;
-    background-color: orange;
 }
 
 /*Animations*/
