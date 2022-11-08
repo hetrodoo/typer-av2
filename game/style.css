@@ -8,6 +8,7 @@ body,
 html {
     margin: 0;
     padding: 0;
+    overflow: hidden;
 }
 
 button {
@@ -86,7 +87,8 @@ button {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 350px;
+    max-width: 300px;
+    width: 75vw;
     height: auto;
     padding: 16px;
     border-radius: 8px;
@@ -94,10 +96,6 @@ button {
 
     background: white;
     filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.25));
-}
-
-.dialog-button {
-    background-color: #77DD77;
 }
 
 .timer {
@@ -183,5 +181,33 @@ button {
     100% {
         opacity: 0;
         scale: 1.9;
+    }
+}
+
+.typing-error {
+    animation-name: typingError;
+    animation-duration: 125ms;
+    animation-iteration-count: 2;
+}
+
+@keyframes typingError {
+    0% {
+        transform: translate(0, -50%);
+    }
+
+    25% {
+        transform: translate(5px, -50%);
+    }
+
+    50% {
+        transform: translate(0, -50%);
+    }
+
+    75% {
+        transform: translate(-5px, -50%);
+    }
+
+    100% {
+        transform: translate(0, -50%);
     }
 }
