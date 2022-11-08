@@ -21,8 +21,8 @@ class GameInstance {
 
         const thisRef = this;
 
-        window.addEventListener('keydown', function ({ key, cancelable, preventDefault }) {
-            thisRef.onKeyDown({ key, cancelable, preventDefault: preventDefault.bind(arguments[0]) });
+        window.addEventListener('keydown', function ({key, cancelable, preventDefault}) {
+            thisRef.onKeyDown({key, cancelable, preventDefault: preventDefault.bind(arguments[0])});
         });
     }
 
@@ -42,8 +42,8 @@ class GameInstance {
     finish() {
         const actualTime = (new Date().getTime() - this.startTime) / 1000;
         const medianTime = this.wordCount / (40 / 60);
-        const wpm = this.wordCount / (actualTime / 60);
-        const points = Math.floor(this.match * (medianTime / actualTime)) * (this.wordCount == this.match ? 2 : 1) * 100;
+        const wpm = this.match / (actualTime / 60);
+        const points = Math.floor(this.match * (medianTime / actualTime)) * (this.wordCount === this.match ? 2 : 1) * 100;
 
         console.log("wordCount", this.wordCount);
         console.log("match", this.match);
@@ -58,7 +58,7 @@ class GameInstance {
         UI.stars.innerText = points === 0 ? "-" : "⭐";
         UI.wpm.innerText = Math.floor(wpm);
 
-        if (this.wordCount == this.match) {
+        if (this.wordCount === this.match) {
             UI.stars.innerText += " ⭐";
 
             if (actualTime <= medianTime) {
@@ -87,14 +87,21 @@ class GameInstance {
         UI.wordDisplay.innerHTML = html;
     }
 
-    onKeyDown({ key, cancelable, preventDefault }) {
+    onKeyDown({key, cancelable, preventDefault}) {
         cancelable && preventDefault();
 
         if (key === 'Enter' && this.wordList.length !== 0) {
             const word = this.wordList.shift();
+            const x = window.innerWidth / 2;
+            const y = window.innerHeight / 2;
+
+            const size = window.innerWidth > window.innerHeight ? window.innerHeight / 2 : window.innerWidth / 2;
 
             if (word === this.inputText) {
                 this.match++;
+                createExplosion(x, y, size, size, "rgba(0,255,0,0.25)");
+            } else {
+                createExplosion(x, y, size, size, "rgba(255,0,0,0.25)");
             }
 
             this.inputText = "";

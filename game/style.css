@@ -156,3 +156,32 @@ button {
         scale: 1;
     }
 }
+
+.explosion {
+    opacity: 0;
+    position: absolute;
+    border-radius: 50%;
+    top: calc(50% - 125px);
+    left: calc(50% - 125px);
+
+    animation-name: explosion;
+    animation-duration: 500ms;
+    animation-iteration-count: 1;
+}
+
+@keyframes explosion {
+    0% {
+        opacity: 0;
+        scale: 0;
+    }
+
+    50% {
+        opacity: 1;
+        scale: 1;
+    }
+
+    100% {
+        opacity: 0;
+        scale: 1.9;
+    }
+}
